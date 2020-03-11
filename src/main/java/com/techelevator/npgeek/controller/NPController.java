@@ -1,11 +1,11 @@
 package com.techelevator.npgeek.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-
-public class Controller {
+@Controller
+public class NPController {
 	
 //	@Autowired
 //	private JdbcParkDao parkDao;
@@ -18,7 +18,7 @@ public class Controller {
 
 	@RequestMapping(path = {"/", "/home"}, method = RequestMethod.GET)
 	public String displayHome() {
-		return "homePage";
+		return "home";
 	}
 	
 	@RequestMapping(path = "/parkDetails", method = RequestMethod.GET)
@@ -40,7 +40,5 @@ public class Controller {
 	public String displayFavorite() {
 		return "favorite";
 	}
-	
-	
 	
 }
