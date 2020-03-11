@@ -8,7 +8,9 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JDBCParkDAO implements ParkDAO {
 
 	private JdbcTemplate jdbcTemplate;
@@ -72,7 +74,7 @@ public class JDBCParkDAO implements ParkDAO {
 		allParks.setAnnualVisitorCount(results.getInt("annualvisitorcount"));
 		allParks.setQuote(results.getString("inspirationalquote"));
 		allParks.setQuoteSource(results.getString("inspirationalquotesource"));
-		allParks.setDescription(results.getString("description"));
+		allParks.setParkDescription(results.getString("parkdescription"));
 		allParks.setEntryFee(results.getBigDecimal("entryfee"));
 		allParks.setNumberOfAnimalSpecies(results.getInt("numberofanimalspecies"));
 

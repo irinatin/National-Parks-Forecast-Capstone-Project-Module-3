@@ -16,7 +16,7 @@ public class Park implements Serializable {
 	private int annualVisitorCount;
 	private String quote;
 	private String quoteSource;
-	private String description;
+	private String parkDescription;
 	private BigDecimal entryFee;
 	private int numberOfAnimalSpecies;
 	
@@ -94,11 +94,11 @@ public class Park implements Serializable {
 	public void setQuoteSource(String quoteSource) {
 		this.quoteSource = quoteSource;
 	}
-	public String getDescription() {
-		return description;
+	public String getParkDescription() {
+		return parkDescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setParkDescription(String description) {
+		this.parkDescription = description;
 	}
 	public BigDecimal getEntryFee() {
 		return entryFee;
