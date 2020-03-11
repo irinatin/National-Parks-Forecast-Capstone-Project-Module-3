@@ -8,7 +8,7 @@ public interface ParkDAO {
 	// this method will return a list of all National Parks
 	// displayed in alphabetical order on the home page.
 
-	public List<Park> searchParkByPardCode();
+	public Park searchParkByParkCode(String parkCode);
 	// this method will return a National Park based off the
 	// parkCode which will display the detail described in the
 	// park data source
