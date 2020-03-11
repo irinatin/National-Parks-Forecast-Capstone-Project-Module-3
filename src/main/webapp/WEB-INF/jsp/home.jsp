@@ -7,8 +7,8 @@
 
 	<div class="home-park-block">
 
-		<a href="/detail?parkcode=${park.parkCode}"> <img
-			src="/img/${park.parkCode}.png">
+		<a href="/detail?parkcode=${park.parkCode}"> 
+			<img src="/img/${park.parkCode}.png">
 		</a>
 
 
