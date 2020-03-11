@@ -43,8 +43,11 @@ public class JDBCParkDAO implements ParkDAO {
 
 	@Override
 	public List<Park> allParksByNumberOfSurveys() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Park> parksBySurveys = new ArrayList<>();
+	
+		
+	
+		return parksBySurveys;
 	}
 
 	private Park mapRowToPark(SqlRowSet results) {
