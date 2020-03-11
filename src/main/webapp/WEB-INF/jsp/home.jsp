@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 
-<c:forEach var="park" items="parks">
+<c:forEach var="park" items="${parks}">
 
 	<div class="home-park-block">
 
@@ -23,7 +23,7 @@
 
 			<p class="park-description">
 				<a href="/detail?parkcode=${park.parkCode}"> 
-					${park.description}
+					${park.parkDescription}
 				</a>
 			</p>
 
