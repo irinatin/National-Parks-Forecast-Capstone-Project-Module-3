@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.npgeek.model.JDBCParkDAO;
 import com.techelevator.npgeek.model.Park;
+import com.techelevator.npgeek.model.ParkDAO;
 
 @Controller
 public class NPController {
 	
 	@Autowired
-	private JDBCParkDAO parkDao;
+	private ParkDAO parkDao;
 	
 //	@Autowired
 //	private JDBCSurveyDAO surveyDao;
