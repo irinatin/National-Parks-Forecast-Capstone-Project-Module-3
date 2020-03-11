@@ -1,6 +1,6 @@
 	  </div> <!-- closes #container -->
 	<footer>
-		National Park Geek | Tech Elevator | 2020 &copy;
+		<p>National Park Geek | Tech Elevator | 2020 &copy;</p>
 	</footer>
 </body>
 </html>
