@@ -1,1 +1,56 @@
 @charset "UTF-8";
+
+
+/*Header Styles*/
+header img {
+	width: 80%;
+	max-width: 500px;
+}
+
+nav {
+	display:flex;
+	justify-content: space-around;
+	width: 80%;
+	max-width: 200px;
+}
+
+nav a {
+	font-family: arial;
+	font-size: large;
+	text-decoration: none;
+	color: #5e3b12;
+}
+
+nav a:hover { 
+	COLOR: #5eca33; 
+	TEXT-DECORATION: none; 
+	font-weight: none 
+}
+
+/*Home Page Styling*/
+
+.home-park-block a img {
+	max-width: 100%;
+	padding: 25px;
+}
+
+.home-park-block {
+	padding-left: 10%;
+}
+
+.text-block {
+	width:100%;
+	max-width: 800px;	
+}
+
+.park-title a {
+	text-decoration: none;
+	color:black;
+}
+
+.park-description a {
+	text-decoration: none;
+	color:black;
+}
+
+

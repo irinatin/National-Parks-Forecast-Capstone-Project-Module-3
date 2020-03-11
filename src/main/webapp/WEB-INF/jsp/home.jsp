@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
@@ -8,7 +9,8 @@
 	<div class="home-park-block">
 
 		<a href="/detail?parkcode=${park.parkCode}"> 
-			<img src="/img/${park.parkCode}.png">
+			<c:set var="imageString" value="${park.parkCode}"/>
+			<img src="img/parks/${fn:toLowerCase(imageString)}.jpg">
 		</a>
 
 
