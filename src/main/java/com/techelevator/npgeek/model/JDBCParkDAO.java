@@ -21,7 +21,7 @@ public class JDBCParkDAO implements ParkDAO {
 	@Override
 	public List<Park> getAllParks() {
 		ArrayList<Park> allNationalParks = new ArrayList<>();
-		String nationalParks = "SELECT * FROM park ORDERBY parkname ASC";
+		String nationalParks = "SELECT * FROM park ORDER BY parkname ASC";
 		SqlRowSet parks = jdbcTemplate.queryForRowSet(nationalParks);
 		while (parks.next()) {
 			Park allParks = mapRowToPark(parks);
@@ -45,8 +45,15 @@ public class JDBCParkDAO implements ParkDAO {
 	@Override
 	public List<Park> allParksByNumberOfSurveys() {
 		ArrayList<Park> parksBySurveys = new ArrayList<>();
-	
-		
+		String surveyResults= "SELECT park.parkname, COUNT (survey_result.surveyid) " +
+							   "FROM park JOIN survey_result ON park.parkcode = survey_result.parkcode " +
+							   "GROUP BY park.parkcode ORDER BY ASC;";
+		SqlRowSet surveys = jdbcTemplate.queryForRowSet(surveyResults);
+		while (surveys.next()) {
+			Park totalSurveys = mapRowToPark(surveys);
+			parksBySurveys.add(totalSurveys);
+					
+		}
 	
 		return parksBySurveys;
 	}
