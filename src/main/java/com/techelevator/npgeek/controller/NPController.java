@@ -1,9 +1,20 @@
 package com.techelevator.npgeek.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-public class controller {
+@Controller
+public class NPController {
+	
+//	@Autowired
+//	private JdbcParkDao parkDao;
+//	
+//	@Autowired
+//	private JdbcSurveyDao surveyDao;
+//	
+//	@Autowired
+//	private JdbcForecastDao forecastDao;
 
 	@RequestMapping(path = {"/", "/home"}, method = RequestMethod.GET)
 	public String displayHome() {
@@ -20,7 +31,7 @@ public class controller {
 		return "survey";
 	}
 	
-	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
+	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
 	public String processSurvey() {
 		return "redirect:/favorite";
 	}
@@ -29,7 +40,5 @@ public class controller {
 	public String displayFavorite() {
 		return "favorite";
 	}
-	
-	
 	
 }
