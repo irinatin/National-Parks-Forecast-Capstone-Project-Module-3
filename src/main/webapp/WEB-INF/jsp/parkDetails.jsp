@@ -97,7 +97,45 @@
  			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
  			<p id="advisory">${advisory}</p>
 		</div>
-		<div id="five-day"></div>
+		<div id="five-day">
+		
+			<div class="daily">
+					<c:set var="string1" value="${forecastTwo.weather}"/>
+					<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
+				 	<img src="img/weather/${string2}.png">
+				 	<p id="high">High: ${forecastTwo.highTemp}</p>
+				 	<p id="low">Low: ${forecastTwo.lowTemp}</p>
+				 		
+			</div>
+			
+			<div class="daily">
+					<c:set var="string1" value="${forecastThree.weather}"/>
+					<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
+				 	<img src="img/weather/${string2}.png">
+				 	<p id="high">High: ${forecastThree.highTemp}</p>
+				 	<p id="low">Low: ${forecastThree.lowTemp}</p>
+				 		
+			</div >
+			
+			<div class="daily">
+					<c:set var="string1" value="${forecastFour.weather}"/>
+					<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
+				 	<img src="img/weather/${string2}.png">
+				 	<p id="high">High: ${forecastFour.highTemp}</p>
+				 	<p id="low">Low: ${forecastFour.lowTemp}</p>
+				 		
+			</div>
+			
+			<div class="daily">
+					<c:set var="string1" value="${forecastFive.weather}"/>
+					<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
+				 	<img src="img/weather/${string2}.png">
+				 	<p id="high">High: ${forecastFive.highTemp}</p>
+				 	<p id="low">Low: ${forecastFive.lowTemp}</p>
+				 		
+			</div>
+		
+		</div>
 	
 	</div>
 
