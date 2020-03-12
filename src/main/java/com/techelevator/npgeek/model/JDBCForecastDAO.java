@@ -7,7 +7,9 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JDBCForecastDAO implements ForecastDAO {
 	
 	private JdbcTemplate jdbcTemplate;
@@ -48,7 +50,7 @@ public class JDBCForecastDAO implements ForecastDAO {
 		}
 		
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	@Override
@@ -62,7 +64,7 @@ public class JDBCForecastDAO implements ForecastDAO {
 			return "Please wear breathable layers.";
 		}
 		
-		return null;
+		return "";
 	}
 
 	@Override
@@ -74,7 +76,7 @@ public class JDBCForecastDAO implements ForecastDAO {
 			return "Please bring an extra gallon of water.";
 		}
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	@Override
@@ -86,11 +88,11 @@ public class JDBCForecastDAO implements ForecastDAO {
 	
 	private Forecast mapToRowForecast(SqlRowSet results) {
 		Forecast allForecasts = new Forecast();
-		allForecasts.setParkCode(results.getNString("parkcode"));
+		allForecasts.setParkCode(results.getString("parkcode"));
 		allForecasts.setDay(results.getInt("fivedayforecastvalue"));
 		allForecasts.setLowTemp(results.getDouble("low"));
 		allForecasts.setHighTemp(results.getDouble("high"));
-		allForecasts.setWeather(results.getNString("forecast"));
+		allForecasts.setWeather(results.getString("forecast"));
 		
 		return allForecasts;
 	}
