@@ -63,8 +63,8 @@ public class NPController {
 		String advisory = "";
 		
 		advisory = advisory + forecastDao.getForecastBasedRec(parkCode, 1) + " ";
-//		advisory = advisory + forecastDao.getLowTempRec(parkCode, 1) + " ";
-//		advisory = advisory + forecastDao.getHighTempRec(parkCode, 1) + " ";
+		advisory = advisory + forecastDao.getLowTempRec(parkCode, 1) + " ";
+		advisory = advisory + forecastDao.getHighTempRec(parkCode, 1) + " ";
 
 		models.put("advisory", advisory);
 		
