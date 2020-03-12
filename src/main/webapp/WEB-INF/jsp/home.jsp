@@ -8,7 +8,7 @@
 
 	<div class="home-park-block">
 
-		<a href="/detail?parkcode=${park.parkCode}"> 
+		<a href="parkDetails?parkCode=${park.parkCode}"> 
 			<c:set var="imageString" value="${park.parkCode}"/>
 			<img src="img/parks/${fn:toLowerCase(imageString)}.jpg">
 		</a>

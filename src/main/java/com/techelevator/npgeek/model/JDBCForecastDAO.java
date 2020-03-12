@@ -7,7 +7,9 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JDBCForecastDAO implements ForecastDAO {
 	
 	private JdbcTemplate jdbcTemplate;
@@ -34,21 +36,36 @@ public class JDBCForecastDAO implements ForecastDAO {
 
 	@Override
 	public String getForecastBasedRec(String parkCode, int day) {
-		String sqlGetForecast = "SELECT forecast FROM weather WHERE parkcode = ? AND fivedayforecastvalue = ? ORDER BY fivedayforecastvalue";
+				
+		String sqlGetForecast = "SELECT CASE forecast WHEN 'snow' THEN 'Please pack the snowshoes.' "
+				+ "WHEN 'rain' THEN 'Please pack the rain gear and wear waterproof shoes.' "
+				+ "WHEN 'sun' THEN 'Please pack a sunblock.' "
+				+ "WHEN 'thunderstorms' THEN 'Please seek shelter and avoid hiking on exposed ridges.' ELSE '' END AS suggestion "
+				+ "FROM weather WHERE parkcode = ? AND fivedayforecastvalue = ?";
+		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetForecast, parkCode, day);
 		
-		if(results.getString("forecast").equals("snow")) {
-			return "Please pack the snowshoes.";
-		} else if(results.getString("forecast").equals("rain")) {
-			return "Please pack the rain gear and wear waterproof shoes.";
-		} else if(results.getString("forecast").equals("thunderstorms")) {
-			return "Please seek shelter and avoid hiking on exposed ridges.";
-		} else if(results.getString("forecast").contentEquals("sun") ) {
-			return "Please pack a sunblock.";
+//		String forecasted = "";
+		
+//		results.beforeFirst();
+		
+		String forecasted = "";
+		
+		while(results.next()) {
+		forecasted = results.getString("suggestion");
 		}
 		
-		// TODO Auto-generated method stub
-		return null;
+//		if(forecasted.equals("snow")) {
+//			return "Please pack the snowshoes.";
+//		} else if(results.getString("forecast").equals("rain")) {
+//			return "Please pack the rain gear and wear waterproof shoes.";
+//		} else if(results.getString("forecast").equals("thunderstorms")) {
+//			return "Please seek shelter and avoid hiking on exposed ridges.";
+//		} else if(results.getString("forecast").equals("sun") ) {
+//			return "Please pack a sunblock.";
+//		}
+		
+		return forecasted;
 	}
 
 	@Override
@@ -56,25 +73,27 @@ public class JDBCForecastDAO implements ForecastDAO {
 		String sqlGetLowTemp = "SELECT low FROM weather WHERE parkcode = ?  AND fivedayforecastvalue = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetLowTemp, parkCode, day);
 		
+		results.beforeFirst();
+		
 		if(results.getDouble("low") < 20) {
 			return "Please stay warm and try to avoid being outside.";
 		} else if(results.getDouble("high") - (results.getDouble("low")) > 20) {
 			return "Please wear breathable layers.";
 		}
 		
-		return null;
+		return "";
 	}
 
 	@Override
 	public String getHighTempRec(String parkCode, int day) {
 		String sqlGetHighTemp = "SELECT low FROM weather WHERE parkcode = ?  AND fivedayforecastvalue = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetHighTemp, parkCode, day);
-		
+				
 		if(results.getDouble("high") > 75) {
 			return "Please bring an extra gallon of water.";
 		}
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	@Override
@@ -86,11 +105,11 @@ public class JDBCForecastDAO implements ForecastDAO {
 	
 	private Forecast mapToRowForecast(SqlRowSet results) {
 		Forecast allForecasts = new Forecast();
-		allForecasts.setParkCode(results.getNString("parkcode"));
+		allForecasts.setParkCode(results.getString("parkcode"));
 		allForecasts.setDay(results.getInt("fivedayforecastvalue"));
 		allForecasts.setLowTemp(results.getDouble("low"));
 		allForecasts.setHighTemp(results.getDouble("high"));
-		allForecasts.setWeather(results.getNString("forecast"));
+		allForecasts.setWeather(results.getString("forecast"));
 		
 		return allForecasts;
 	}

@@ -1,6 +1,8 @@
 package com.techelevator.npgeek.model;
 
-public class Forecast {
+import java.io.Serializable;
+
+public class Forecast implements Serializable {
 	
 	private String parkCode;
 	private int day;
