@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.npgeek.model.Forecast;
 import com.techelevator.npgeek.model.JDBCForecastDAO;
-import com.techelevator.npgeek.model.JDBCParkDAO;
+import com.techelevator.npgeek.model.JDBCSurveyDAO;
 import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
+import com.techelevator.npgeek.model.Survey;
 
 @Controller
 public class NPController {
@@ -23,9 +24,9 @@ public class NPController {
 	@Autowired
 	private ParkDAO parkDao;
 	
-//	@Autowired
-//	private JDBCSurveyDAO surveyDao;
-//	
+	@Autowired
+	private JDBCSurveyDAO surveyDao;
+	
 	@Autowired
 	private JDBCForecastDAO forecastDao;
 
@@ -75,7 +76,9 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
-	public String displaySurveyForm(HttpSession session) {
+	public String displaySurveyForm(HttpSession session, ModelMap map, Survey surv) {
+		List<Park> parks = parkDao.getAllParks();
+		map.addAttribute("parks", parks);
 		return "survey";
 	}
 	
