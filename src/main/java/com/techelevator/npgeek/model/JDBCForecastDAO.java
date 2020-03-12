@@ -45,55 +45,43 @@ public class JDBCForecastDAO implements ForecastDAO {
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetForecast, parkCode, day);
 		
-//		String forecasted = "";
-		
-//		results.beforeFirst();
-		
 		String forecasted = "";
 		
 		while(results.next()) {
 		forecasted = results.getString("suggestion");
 		}
 		
-//		if(forecasted.equals("snow")) {
-//			return "Please pack the snowshoes.";
-//		} else if(results.getString("forecast").equals("rain")) {
-//			return "Please pack the rain gear and wear waterproof shoes.";
-//		} else if(results.getString("forecast").equals("thunderstorms")) {
-//			return "Please seek shelter and avoid hiking on exposed ridges.";
-//		} else if(results.getString("forecast").equals("sun") ) {
-//			return "Please pack a sunblock.";
-//		}
-		
 		return forecasted;
 	}
 
 	@Override
 	public String getLowTempRec(String parkCode, int day) {
-		String sqlGetLowTemp = "SELECT low FROM weather WHERE parkcode = ?  AND fivedayforecastvalue = ?";
+		String sqlGetLowTemp = "SELECT CASE WHEN EXISTS(SELECT low FROM weather WHERE low < 20 AND parkcode = ?  AND fivedayforecastvalue = ?) THEN 'Beware the cold, yo.' ELSE '' END AS coldwarn";
+		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetLowTemp, parkCode, day);
 		
-		results.beforeFirst();
+		String forecasted = "";
 		
-		if(results.getDouble("low") < 20) {
-			return "Please stay warm and try to avoid being outside.";
-		} else if(results.getDouble("high") - (results.getDouble("low")) > 20) {
-			return "Please wear breathable layers.";
+		while(results.next()) {
+		forecasted = results.getString("coldwarn");
 		}
 		
-		return "";
+		return forecasted;
 	}
 
 	@Override
 	public String getHighTempRec(String parkCode, int day) {
-		String sqlGetHighTemp = "SELECT low FROM weather WHERE parkcode = ?  AND fivedayforecastvalue = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetHighTemp, parkCode, day);
-				
-		if(results.getDouble("high") > 75) {
-			return "Please bring an extra gallon of water.";
+		String sqlGetLowTemp = "SELECT CASE WHEN EXISTS(SELECT high FROM weather WHERE high > 75 AND parkcode = ?  AND fivedayforecastvalue = ?) THEN 'Bring a spare gallon of water.' ELSE '' END AS hotwarn";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetLowTemp, parkCode, day);
+		
+		String forecasted = "";
+		
+		while(results.next()) {
+		forecasted = results.getString("hotwarn");
 		}
-		// TODO Auto-generated method stub
-		return "";
+		
+		return forecasted;
 	}
 
 	@Override
@@ -116,26 +104,7 @@ public class JDBCForecastDAO implements ForecastDAO {
 
 }
 
-////snow
-//"Please pack the snowshoes."
-//
-////rain
-//"Please pack the rain gear and wear waterproof shoes."
-//
-////thunderstorms
-//"Please seek shelter and avoid hiking on exposed ridges."
-//
-////sun
-//"Please pack a sunblock."
-//
-////temp over 75
-//"Please bring an extra gallon of water."
-//
-////difference more than 20 degrees
-//"Please wear breathable layers."
-//
-////temp below 20
-//"Please stay warm and try to avoid being outside."
+
 
 
 

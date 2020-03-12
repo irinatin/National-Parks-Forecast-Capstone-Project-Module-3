@@ -88,11 +88,12 @@
 	
 	<div id="weather-box">
 	
-		<!--I don't want to build this until I've talked through how we're 
-		going to format the forecast stuff when we pass it to the view-->
+		
 		<div id="today-weather">
+		<c:set var="string1" value="${forecastOne.weather}"/>
+		<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 			<h3>Today</h3>
- 			<img src="img/weather/${forecastOne.weather}.png">
+ 			<img src="img/weather/${string2}.png">
  			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
  			<p id="advisory">${advisory}</p>
 		</div>
