@@ -2,6 +2,8 @@ package com.techelevator.npgeek.model;
 
 import java.time.LocalDate;
 
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 public class Survey {
 
 	private int surveyId;
