@@ -45,7 +45,7 @@ CREATE TABLE survey_result
 	state VARCHAR(30) NOT NULL,
 	activityLevel VARCHAR(100) NOT NULL,
         submitDate DATE NOT NULL,
-        UNIQUE(emailAddress, submitDate),
+        UNIQUE(parkCode, emailAddress, submitDate),
         
         CONSTRAINT fk_parkcode FOREIGN KEY (parkCode) REFERENCES park (parkCode)
 
