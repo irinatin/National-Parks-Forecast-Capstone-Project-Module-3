@@ -5,7 +5,5 @@ import java.util.List;
 public interface SurveyDAO {
 	
 	public List<Survey> getAllSurveys();
-	
-	
 
 }
