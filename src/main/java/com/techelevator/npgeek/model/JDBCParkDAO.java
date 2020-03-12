@@ -47,9 +47,9 @@ public class JDBCParkDAO implements ParkDAO {
 	@Override
 	public List<Park> allParksByNumberOfSurveys() {
 		ArrayList<Park> parksBySurveys = new ArrayList<>();
-		String surveyResults= "SELECT park.parkname, COUNT (survey_result.surveyid) " +
-							   "FROM park JOIN survey_result ON park.parkcode = survey_result.parkcode " +
-							   "GROUP BY park.parkcode ORDER BY ASC;";
+		String surveyResults= "SELECT park.parkcode, park.parkname, COUNT(*) AS surveycount " +
+							   "FROM survey_result LEFT JOIN park ON survey_result.parkcode = park.parkcode " +
+							   "GROUP BY park.parkcode ORDER BY surveycount DESC;";
 		SqlRowSet surveys = jdbcTemplate.queryForRowSet(surveyResults);
 		while (surveys.next()) {
 			Park totalSurveys = mapRowToPark(surveys);
