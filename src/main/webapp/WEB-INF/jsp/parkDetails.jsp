@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 
 
-<img src="/img/${park.parkCode}.png" class="detail-image">
+<img src="img/parks/${fn:toLowerCase(park.parkCode)}.jpg" class="detail-image">
 
 <div class="detail-text-block">
 
@@ -13,7 +14,7 @@
 	
 	<h3>Considered the best park in ${park.state}!</h3>
 	
-	<p>${park.description}</p>
+	<p>${park.parkDescription}</p>
 
 	<p id="quote">${park.quote}</p>
 	<p id="attribution">${park.quoteSource}</p>
@@ -91,7 +92,9 @@
 		going to format the forecast stuff when we pass it to the view-->
 		<div id="today-weather">
 			<h3>Today</h3>
-			<p>High: ${forecast.highTemp} Low: ${forecast.lowTemp}</p>
+ 			<img src="img/weather/${forecastOne.weather}.png">
+ 			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
+ 			<p id="advisory">${advisory}</p>
 		</div>
 		<div id="five-day"></div>
 	
