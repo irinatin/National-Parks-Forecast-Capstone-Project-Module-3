@@ -13,5 +13,5 @@
 		<c:url var="logoImgSrc" value="/img/logo.png" />
 		<a href="home"><img src="${logoImgSrc}" alt="National Park Geek logo"></a>
 	</header>
-	<nav><a href="home">Home </a><a href="surveypage"> Survey</a></nav>
+	<nav><a href="home">Home </a><a href="surveyPage"> Survey</a></nav>
 	<div id="container">
