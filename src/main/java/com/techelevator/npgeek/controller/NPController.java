@@ -68,6 +68,8 @@ public class NPController {
 
 		models.put("advisory", advisory);
 		
+		
+		
 		return "parkDetails";
 		
 	}
