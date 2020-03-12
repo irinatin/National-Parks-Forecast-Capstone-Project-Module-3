@@ -17,14 +17,14 @@
 		<div class="text-block">
 
 			<h2 class="park-title">
-				<a href="/detail?parkcode=${park.parkCode}"> 
+				<a href="parkDetails?parkCode=${park.parkCode}"> 
 					${park.parkName} 
 				</a>
 			</h2>
 
 
 			<p class="park-description">
-				<a href="/detail?parkcode=${park.parkCode}"> 
+				<a href="parkDetails?parkCode=${park.parkCode}"> 
 					${park.parkDescription}
 				</a>
 			</p>
