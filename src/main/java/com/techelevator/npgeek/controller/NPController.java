@@ -92,6 +92,7 @@ public class NPController {
 	
 	@RequestMapping(path = "/favorite", method = RequestMethod.GET)
 	public String displayFavorite(HttpSession session) {
+		
 		return "favorite";
 	}
 	
