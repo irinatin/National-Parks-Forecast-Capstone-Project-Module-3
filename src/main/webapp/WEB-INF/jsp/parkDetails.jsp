@@ -103,11 +103,11 @@
 		<img src="img/weather/${string2}.png">
 		<p id="high-low">
 			High:
-			<c:if test="${tempCheck == true}">${forecastOne.highTemp}°F</c:if>
-			<c:if test="${tempCheck == false}">${(forecastOne.highTemp - 32) * 0.5556}°C</c:if>
+			<c:if test="${tempCheck == true}">${forecastOne.highTemp}ï¿½F</c:if>
+			<c:if test="${tempCheck == false}">${(forecastOne.highTemp - 32) * 0.5556}ï¿½C</c:if>
 			Low:
-			<c:if test="${tempCheck == true}">${forecastOne.lowTemp}°F</c:if>
-			<c:if test="${tempCheck == false}">${(forecastOne.lowTemp - 32) * 0.5556}°C</c:if>
+			<c:if test="${tempCheck == true}">${forecastOne.lowTemp}ï¿½F</c:if>
+			<c:if test="${tempCheck == false}">${(forecastOne.lowTemp - 32) * 0.5556}ï¿½C</c:if>
 		</p>
 		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Celsius">Click
 			here for Celsius Temperatures</a> </p>
@@ -135,14 +135,14 @@
 
 				<p id="high">
 					High:
-					<c:if test="${tempCheck == true}">${forecastTwo.highTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastTwo.highTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastTwo.highTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastTwo.highTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 				<p id="low">
 					Low:
-					<c:if test="${tempCheck == true}">${forecastTwo.lowTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastTwo.lowTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastTwo.lowTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastTwo.lowTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 			</div>
@@ -153,14 +153,14 @@
 				<img src="img/weather/${string2}.png">
 				<p id="high">
 					High:
-					<c:if test="${tempCheck == true}">${forecastThree.highTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastThree.highTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastThree.highTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastThree.highTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 				<p id="low">
 					Low:
-					<c:if test="${tempCheck == true}">${forecastThree.lowTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastThree.lowTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastThree.lowTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastThree.lowTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 			</div>
@@ -171,14 +171,14 @@
 				<img src="img/weather/${string2}.png">
 				<p id="high">
 					High:
-					<c:if test="${tempCheck == true}">${forecastFour.highTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFour.highTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastFour.highTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFour.highTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 				<p id="low">
 					Low:
-					<c:if test="${tempCheck == true}">${forecastFour.lowTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFour.lowTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastFour.lowTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFour.lowTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 			</div>
@@ -189,14 +189,14 @@
 				<img src="img/weather/${string2}.png">
 				<p id="high">
 					High:
-					<c:if test="${tempCheck == true}">${forecastFive.highTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFive.highTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastFive.highTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFive.highTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 				<p id="low">
 					Low:
-					<c:if test="${tempCheck == true}">${forecastFive.lowTemp}°F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFive.lowTemp - 32) * 0.5556}°C</c:if>
+					<c:if test="${tempCheck == true}">${forecastFive.lowTemp}ï¿½F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFive.lowTemp - 32) * 0.5556}ï¿½C</c:if>
 				</p>
 
 			</div>

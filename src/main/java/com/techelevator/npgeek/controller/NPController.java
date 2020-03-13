@@ -1,15 +1,21 @@
 package com.techelevator.npgeek.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.npgeek.model.Forecast;
 import com.techelevator.npgeek.model.JDBCForecastDAO;
@@ -104,19 +110,34 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
-	public String displaySurveyForm(HttpSession session, ModelMap map, Survey surv) {
+	public String displaySurveyForm(HttpSession session, Model modelHolder, ModelMap map, RedirectAttributes flash) {
 		List<Park> parks = parkDao.getAllParks();
 		map.addAttribute("parks", parks);
+		if(!modelHolder.containsAttribute("survey")){
+				modelHolder.addAttribute("survey", new Survey());
+		}
 		return "survey";
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
-	public String processSurvey(HttpSession session) {
+	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, RedirectAttributes flash, BindingResult result, HttpSession session) {
+		survey.setSubmitDate(LocalDate.now());
+		
+		if(result.hasErrors()) {
+			flash.addFlashAttribute("survey", survey);
+			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
+			return "redirect:/surveyPage";
+		}
+		
+		flash.addFlashAttribute("message", "Thank you for your feedback!");
+		
+		surveyDao.submitSurvey(survey);
 		return "redirect:/favorite";
 	}
 	
 	@RequestMapping(path = "/favorite", method = RequestMethod.GET)
 	public String displayFavorite(HttpSession session) {
+		
 		return "favorite";
 	}
 	
