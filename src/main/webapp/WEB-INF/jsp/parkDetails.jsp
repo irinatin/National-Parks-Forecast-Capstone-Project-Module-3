@@ -98,7 +98,20 @@
 			<h3>Today</h3>
  			<img src="img/weather/${string2}.png">
  			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
+ 			<c:url var="formAction" value="parkDetails?parkCode=${park.parkCode}"/> 
+ 				<%-- <form method="GET" action= "${formAction}">
  				<input type="checkbox" name="control" id="control" />
+ 				<c:when test="control">
+ 			<p> id="high-low">High:${((forecastOne.highTemp -32) / 1.8)} Low: ${((forecastOne.lowTemp -32) / 1.8)}  </p>
+ 				</c:when>
+ 				<c:otherwise>
+ 				<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
+ 				</c:otherwise>
+ 				
+ 				</form> --%>
+ 				
+ 				
+ 				
 				<label for="control">
 				Click to enable Celcius.
 				</label>
@@ -144,6 +157,8 @@
 				 	<img src="img/weather/${string2}.png">
 				 	<p id="high">High: ${forecastFive.highTemp}</p>
 				 	<p id="low">Low: ${forecastFive.lowTemp}</p>
+				 	
+				 	
 				 		
 			</div>
 		
@@ -152,6 +167,13 @@
 	</div>
 
 
+<div>
+    <label for="toggle">Toggle</label>
+    
+    <input type="checkbox" id="toggle" class="visually-hidden">
+
+    <div class="control-me"></div>
+</div>
 
 
 
