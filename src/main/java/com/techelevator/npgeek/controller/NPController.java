@@ -82,7 +82,7 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
-	public String displaySurveyForm(HttpSession session, Model modelHolder, ModelMap map, Survey surv) {
+	public String displaySurveyForm(HttpSession session, Model modelHolder, ModelMap map, RedirectAttributes flash) {
 		List<Park> parks = parkDao.getAllParks();
 		map.addAttribute("parks", parks);
 		if(!modelHolder.containsAttribute("survey")){
