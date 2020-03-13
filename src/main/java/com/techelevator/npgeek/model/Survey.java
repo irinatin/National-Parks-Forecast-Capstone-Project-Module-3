@@ -2,12 +2,15 @@ package com.techelevator.npgeek.model;
 
 import java.time.LocalDate;
 
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 public class Survey {
 
 	private int surveyId;
 	private String parkCode;
+	@NotBlank(message="Email is Required")
+	@Email(message="Email Must Be a Valid Email")
 	private String emailAddress;
 	private String state;
 	private String activityLevel;

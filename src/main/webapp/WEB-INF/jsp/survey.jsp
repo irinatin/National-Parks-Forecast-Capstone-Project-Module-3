@@ -1,8 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-<form action="surveyPage" method="post">
+<h2>National Parks Survey</h2>
+
+<%-- <cc:url --%>
+
+<form:form action="surveyPage" method="post" modelAttribute="survey" />
 
 <div class="form">
 
@@ -16,8 +21,10 @@
 </div>
 
 <div class="formInputGroup">
-<label for="emailAddress">My Email Address Is:</label>
-<input type="text" name="emailAddress" id="emailAddress"/>
+<form:label path="emailAddress">My Email Address Is:</form:label>
+<form:input type="text" path="emailAddress" id="emailAddress"/>
+<form:error path="emailAddress" cssClass="error"/>
+
 </div>
 
 <div class="formInputGroup">
