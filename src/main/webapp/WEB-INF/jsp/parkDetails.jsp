@@ -8,11 +8,14 @@
 <div id="bigPicHolder">
 <img id="bigPic" src="img/parks/${fn:toLowerCase(park.parkCode)}.jpg" class="detail-image">	
 </div>
-
-	<div id="quoteHolder">
+	
+	<div id="hotdog"
+>	<div id="quoteHolder">
 		<p id="quote">"${park.quote}"</p>
-		<br>
-		<p id="attribution"> &nbsp; &nbsp;-${park.quoteSource}</p>
+	</div>
+	<div id="attribution">
+		<p id="elephant"> &nbsp; &nbsp;-&nbsp;${park.quoteSource}</p>
+	</div>	
 	</div>
 
 <div class="detail-text-block">
@@ -24,7 +27,7 @@
 	<p>${park.parkDescription}</p>
 
 </div>	
-	
+	<div id="centerer">
 	<div id="stat-holder">
 	
 		<div class="statistics-box">
@@ -82,14 +85,12 @@
 			<p class="big-number">$${park.entryFee}</p>
 		
 		</div>
+		</div>
 
 	</div>
 
 	<!--This is not yet linked to anything, but it sure is fun to click.-->
-	<input type="checkbox" name="control" id="control" />
-	<label for="control">
-	Click to enable Celcius.
-	</label>
+
 	
 	<div id="weather-box">
 	
@@ -100,13 +101,19 @@
 			<h3>Today</h3>
  			<img src="img/weather/${string2}.png">
  			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
+ 				<input type="checkbox" name="control" id="control" />
+				<label for="control">
+				Click to enable Celcius.
+				</label>
  			<p id="advisory">${advisory}</p>
  			<c:if test="${(forecastOne.highTemp - forecastOne.lowTemp) > 20}">
  				<p>Wear breatheable layers!!!</p>
  			</c:if>
 		</div>
+		<div> 
+		<h3 style="font-family: arial">Extended Forecast</h3>
 		<div id="five-day">
-		
+			<br>
 			<div class="daily">
 					<c:set var="string1" value="${forecastTwo.weather}"/>
 					<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
@@ -144,7 +151,7 @@
 			</div>
 		
 		</div>
-	
+		</div>
 	</div>
 
 

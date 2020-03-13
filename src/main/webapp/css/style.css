@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body {
+	font-family: arial;
+}
 
 /*Header Styles*/
 header img {
@@ -75,9 +78,9 @@ nav a:hover {
 }
 
 #quoteHolder {
-	display: flex;
-	justify-content: center;
-	width:100%;
+    display: flex;
+    justify-content: center;
+    width: 499px;
 }
 
 #quote {
@@ -86,15 +89,33 @@ nav a:hover {
 }
 
 #attribution {
-	text-align:center;
+    display: flex;
+    justify-content: center;
+    max-width: 499px;
+    flex-wrap: wrap;
+}
+
+#hotdog {
+	margin: auto;
+	display: flex;
+    justify-content: center;
+    max-width: 499px;
+    flex-wrap: wrap;
+}
+
+#elephant {
+	text-align:right; 
+	padding-left: 140px;
+    margin: 0px
 }
 
 #stat-holder {
-	width: 100%;
+	width: 75%;
 	display: flex;
 	justify-content: space-evenly;
 	align-content: space-around;
 	flex-wrap: wrap;
+	justify-items: center;
 }
 
 .statistics-box {
@@ -115,7 +136,46 @@ nav a:hover {
 	font-family: arial;
 }
 
+#centerer {
+	display: flex;
+	justify-content: center;
+}
 
+#weather-box {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#today-weather {
+	font-family: arial;
+	max-width: 250px;
+	padding-right: 175px;
+}
+
+#today-weather { 
+	padding-bottom: 10px;
+}
+
+#high-low {
+	font-size: 25px;
+	margin-bottom: 0px;
+}
+
+#five-day {
+	display: flex;
+	align-items: center;
+	font-family: arial;	
+}
+
+.daily {
+	width: 100px;
+}
+
+.daily img {
+	width: 100%;
+}
 
 
 
