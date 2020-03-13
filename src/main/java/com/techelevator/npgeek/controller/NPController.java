@@ -44,7 +44,7 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/parkDetails", method = RequestMethod.GET)
-	public String displayDetails(HttpSession session, @RequestParam String parkCode, ModelMap models) {
+	public String displayDetails(HttpSession session, @RequestParam String parkCode, ModelMap models, @RequestParam(required=false) String tempScale) {
 		
 		Park park = parkDao.searchParkByParkCode(parkCode);
 		
@@ -75,10 +75,38 @@ public class NPController {
 
 		models.put("advisory", advisory);
 		
+		boolean isFahrenheit = true;
 		
+		if( (tempScale == null) && (session.getAttribute("tempPref") == null)) {
+			isFahrenheit = true;
+			tempScale = "Fahrenheit";
+			session.setAttribute("tempPref", "Fahrenheit");
+		}
+		
+		else if( (tempScale == null) && (session.getAttribute("tempPref")).equals("Celsius")) {
+			isFahrenheit = false;
+		}
+		
+		else if( (tempScale == null) && (session.getAttribute("tempPref")).equals("Fahrenheit")) {
+			isFahrenheit = true;
+		}
+		
+		else if(tempScale != null) {
+			session.setAttribute("tempPref", tempScale);
+		}
+		
+		if ((session.getAttribute("tempPref")).equals("Celsius")) {
+			isFahrenheit = false;
+		}
+		
+		if ((session.getAttribute("tempPref")).equals("Fahrenheit")) {
+			isFahrenheit = true;
+		}
+		
+		models.put("tempCheck", isFahrenheit);
 		
 		return "parkDetails";
-		
+				
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)

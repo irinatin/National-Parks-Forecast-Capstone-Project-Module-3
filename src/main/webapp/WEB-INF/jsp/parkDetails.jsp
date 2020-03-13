@@ -101,11 +101,24 @@
 		<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 		<h3>Today</h3>
 		<img src="img/weather/${string2}.png">
-		<p id="high-low">High: ${forecastOne.highTemp} Low:
-			${forecastOne.lowTemp}</p>
-			
-		<input type="submit" value="Click Here for Celcius!" class="btn btn-primary" />	
-		<c:url var = "formAction" value = "parkDetails?parkCode=${park.parkCode}"/> 
+		<p id="high-low">
+			High:
+			<c:if test="${tempCheck == true}">${forecastOne.highTemp}�F</c:if>
+			<c:if test="${tempCheck == false}">${(forecastOne.highTemp - 32) * 0.5556}�C</c:if>
+			Low:
+			<c:if test="${tempCheck == true}">${forecastOne.lowTemp}�F</c:if>
+			<c:if test="${tempCheck == false}">${(forecastOne.lowTemp - 32) * 0.5556}�C</c:if>
+		</p>
+		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Celsius">Click
+			here for Celsius Temperatures</a> </p>
+		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Fahrenheit">Click
+			here for Fahrenheit Temperatures</a></p>
+
+
+
+
+
+
 		<p id="advisory">${advisory}</p>
 		<c:if test="${(forecastOne.highTemp - forecastOne.lowTemp) > 20}">
 			<p>Wear breatheable layers!!!</p>
@@ -119,8 +132,18 @@
 				<c:set var="string1" value="${forecastTwo.weather}" />
 				<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 				<img src="img/weather/${string2}.png">
-				<p id="high">High: ${forecastTwo.highTemp}</p>
-				<p id="low">Low: ${forecastTwo.lowTemp}</p>
+
+				<p id="high">
+					High:
+					<c:if test="${tempCheck == true}">${forecastTwo.highTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastTwo.highTemp - 32) * 0.5556}�C</c:if>
+				</p>
+
+				<p id="low">
+					Low:
+					<c:if test="${tempCheck == true}">${forecastTwo.lowTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastTwo.lowTemp - 32) * 0.5556}�C</c:if>
+				</p>
 
 			</div>
 
@@ -128,8 +151,17 @@
 				<c:set var="string1" value="${forecastThree.weather}" />
 				<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 				<img src="img/weather/${string2}.png">
-				<p id="high">High: ${forecastThree.highTemp}</p>
-				<p id="low">Low: ${forecastThree.lowTemp}</p>
+				<p id="high">
+					High:
+					<c:if test="${tempCheck == true}">${forecastThree.highTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastThree.highTemp - 32) * 0.5556}�C</c:if>
+				</p>
+
+				<p id="low">
+					Low:
+					<c:if test="${tempCheck == true}">${forecastThree.lowTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastThree.lowTemp - 32) * 0.5556}�C</c:if>
+				</p>
 
 			</div>
 
@@ -137,8 +169,17 @@
 				<c:set var="string1" value="${forecastFour.weather}" />
 				<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 				<img src="img/weather/${string2}.png">
-				<p id="high">High: ${forecastFour.highTemp}</p>
-				<p id="low">Low: ${forecastFour.lowTemp}</p>
+				<p id="high">
+					High:
+					<c:if test="${tempCheck == true}">${forecastFour.highTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFour.highTemp - 32) * 0.5556}�C</c:if>
+				</p>
+
+				<p id="low">
+					Low:
+					<c:if test="${tempCheck == true}">${forecastFour.lowTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFour.lowTemp - 32) * 0.5556}�C</c:if>
+				</p>
 
 			</div>
 
@@ -146,19 +187,23 @@
 				<c:set var="string1" value="${forecastFive.weather}" />
 				<c:set var="string2" value="${fn:replace(string1,' ', '')}" />
 				<img src="img/weather/${string2}.png">
-				<p id="high">High: ${forecastFive.highTemp}</p>
-				<p id="low">Low: ${forecastFive.lowTemp}</p>
+				<p id="high">
+					High:
+					<c:if test="${tempCheck == true}">${forecastFive.highTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFive.highTemp - 32) * 0.5556}�C</c:if>
+				</p>
 
-
+				<p id="low">
+					Low:
+					<c:if test="${tempCheck == true}">${forecastFive.lowTemp}�F</c:if>
+					<c:if test="${tempCheck == false}">${(forecastFive.lowTemp - 32) * 0.5556}�C</c:if>
+				</p>
 
 			</div>
 
 		</div>
 	</div>
 </div>
-
-
-
 
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
