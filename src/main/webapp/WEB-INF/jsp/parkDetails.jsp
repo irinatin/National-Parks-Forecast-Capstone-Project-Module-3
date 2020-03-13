@@ -8,11 +8,14 @@
 <div id="bigPicHolder">
 <img id="bigPic" src="img/parks/${fn:toLowerCase(park.parkCode)}.jpg" class="detail-image">	
 </div>
-
-	<div id="quoteHolder">
+	
+	<div id="hotdog"
+>	<div id="quoteHolder">
 		<p id="quote">"${park.quote}"</p>
-		<br>
-		<p id="attribution"> &nbsp; &nbsp;-${park.quoteSource}</p>
+	</div>
+	<div id="attribution">
+		<p id="elephant"> &nbsp; &nbsp;-&nbsp;${park.quoteSource}</p>
+	</div>	
 	</div>
 
 <div class="detail-text-block">
