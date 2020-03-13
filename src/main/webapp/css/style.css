@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body {
+	font-family: arial;
+}
 
 /*Header Styles*/
 header img {
@@ -75,9 +78,9 @@ nav a:hover {
 }
 
 #quoteHolder {
-	display: flex;
-	justify-content: center;
-	width:100%;
+    display: flex;
+    justify-content: center;
+    width: 499px;
 }
 
 #quote {
@@ -86,7 +89,24 @@ nav a:hover {
 }
 
 #attribution {
-	text-align:center;
+    display: flex;
+    justify-content: center;
+    max-width: 499px;
+    flex-wrap: wrap;
+}
+
+#hotdog {
+	margin: auto;
+	display: flex;
+    justify-content: center;
+    max-width: 499px;
+    flex-wrap: wrap;
+}
+
+#elephant {
+	text-align:right; 
+	padding-left: 140px;
+    margin: 0px
 }
 
 #stat-holder {
