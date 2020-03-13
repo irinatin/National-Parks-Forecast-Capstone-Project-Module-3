@@ -34,7 +34,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	
 	@Override
 	public Survey submitSurvey(Survey surv) {
-		String sqlCreateSurvey = "INSERT INTO survey_result VALUES(?, ?, ?, ?, ?, ?)";
+		String sqlCreateSurvey = "INSERT INTO survey_result(surveyid, parkcode, emailaddress, state, activitylevel, submitdate) VALUES(?, ?, ?, ?, ?, ?)";
 		surv.setSurveyId(getNextId());
 		jdbcTemplate.update(sqlCreateSurvey, surv.getSurveyId(), surv.getParkCode(), surv.getEmailAddress(), surv.getState(), surv.getActivityLevel(), surv.getSubmitDate());
 		return surv;

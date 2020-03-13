@@ -2,13 +2,13 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-<form action="survey" method="post">
+<form action="surveyPage" method="post">
 
 <div class="form">
 
 <div class="formInputGroup">
-<label for="parkcode">My Favorite Park Is:</label>
-<select name="parkcode" id="parkcode">
+<label for="parkCode">My Favorite Park Is:</label>
+<select name="parkCode" id="parkCode">
 <c:forEach items="${parks}" var="park">
 	<option value="${park.parkCode}">${park.parkName}</option>
 </c:forEach>
@@ -16,8 +16,8 @@
 </div>
 
 <div class="formInputGroup">
-<label for="emailaddress">My Email Address Is:</label>
-<input type="text" name="emailaddress" id="emailaddress"/>
+<label for="emailAddress">My Email Address Is:</label>
+<input type="text" name="emailAddress" id="emailAddress"/>
 </div>
 
 <div class="formInputGroup">
@@ -79,12 +79,12 @@
 
 
 <div class="formInputGroup">
-<label for="activitylevel">My Activity Level Is:</label>
+<label for="activityLevel">My Activity Level Is:</label>
 	<span>
-		<input type="radio" name="activitylevel" value="" id="activitylevel">Inactive
-		<input type="radio" name="activitylevel" value="" id="activitylevel">Sedentary
-		<input type="radio" name="activitylevel" value="" id="activitylevel">Active
-		<input type="radio" name="activitylevel" value="" id="activitylevel">Extremely Active
+		<input type="radio" name="activityLevel" value="Inactive" id="activityLevel">Inactive
+		<input type="radio" name="activityLevel" value="Sedentary" id="activityLevel">Sedentary
+		<input type="radio" name="activityLevel" value="Active" id="activityLevel">Active
+		<input type="radio" name="activityLevel" value="Extremely Active" id="activityLevel">Extremely Active
 	</span>
 </div>
 
