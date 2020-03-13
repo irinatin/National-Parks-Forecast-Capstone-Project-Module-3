@@ -53,4 +53,70 @@ nav a:hover {
 	color:black;
 }
 
+/* Detail page styling */
+
+#bigPicHolder {
+	display: flex;
+	justify-content: center;
+	width:100%;
+}
+
+#bigPic {
+	max-width: 499px;
+	display: block;
+}
+
+.detail-text-block {
+	max-width: 800px;
+	width: 100%;
+	font-family: arial;
+	padding-left: 100px;
+	padding-bottom: 100px;
+}
+
+#quoteHolder {
+	display: flex;
+	justify-content: center;
+	width:100%;
+}
+
+#quote {
+	font-style: italic;
+	text-align:center;
+}
+
+#attribution {
+	text-align:center;
+}
+
+#stat-holder {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-content: space-around;
+	flex-wrap: wrap;
+}
+
+.statistics-box {
+	width: 200px;
+	padding-bottom: 50px;
+}
+
+.big-number {
+	font-family: arial;
+	font-size: 35px;
+	text-align: center;
+	margin: 0px;
+}
+
+.subtitle {
+	text-align: center;
+	margin: 0px;
+	font-family: arial;
+}
+
+
+
+
+
 

@@ -5,8 +5,15 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 
+<div id="bigPicHolder">
+<img id="bigPic" src="img/parks/${fn:toLowerCase(park.parkCode)}.jpg" class="detail-image">	
+</div>
 
-<img src="img/parks/${fn:toLowerCase(park.parkCode)}.jpg" class="detail-image">
+	<div id="quoteHolder">
+		<p id="quote">"${park.quote}"</p>
+		<br>
+		<p id="attribution"> &nbsp; &nbsp;-${park.quoteSource}</p>
+	</div>
 
 <div class="detail-text-block">
 
@@ -16,37 +23,35 @@
 	
 	<p>${park.parkDescription}</p>
 
-	<p id="quote">${park.quote}</p>
-	<p id="attribution">${park.quoteSource}</p>
-	
+</div>	
 	
 	<div id="stat-holder">
 	
 		<div class="statistics-box">
 		
-			<p class="big-number">${park.acreage}</p>
 			<p class="subtitle">Acres of Land</p>
+			<p class="big-number">${park.acreage}</p>
 		
 		</div>
 		
 		<div class="statistics-box">
 		
+			<p class="subtitle">Park Elevation</p>		
 			<p class="big-number">${park.elevation}</p>
-			<p class="subtitle">Park Elevation</p>
 		
 		</div>
 		
 		<div class="statistics-box">
-		
+			
+			<p class="subtitle">Miles of Trail</p>		
 			<p class="big-number">${park.milesOfTrail}</p>
-			<p class="subtitle">Miles of Trail</p>
 		
 		</div>
 		
 		<div class="statistics-box">
 		
+			<p class="subtitle">Campsites</p>		
 			<p class="big-number">${park.numberOfSites}</p>
-			<p class="subtitle">Campsites</p>
 		
 		</div>
 		
@@ -58,23 +63,23 @@
 		</div>
 		
 		<div class="statistics-box">
-		
+
+			<p class="subtitle">Visitors Each Year</p>		
 			<p class="big-number">${park.annualVisitorCount}</p>
-			<p class="subtitle">Visitors Each Year</p>
 		
 		</div>
 		
 		<div class="statistics-box">
 		
+			<p class="subtitle">Animal Species</p>		
 			<p class="big-number">${park.numberOfAnimalSpecies}</p>
-			<p class="subtitle">Animal Species</p>
 		
 		</div>
 		
 		<div class="statistics-box">
 		
+			<p class="subtitle">To Enter</p>		
 			<p class="big-number">$${park.entryFee}</p>
-			<p class="subtitle">To Enter</p>
 		
 		</div>
 
@@ -96,6 +101,9 @@
  			<img src="img/weather/${string2}.png">
  			<p id="high-low">High: ${forecastOne.highTemp} Low: ${forecastOne.lowTemp}</p>
  			<p id="advisory">${advisory}</p>
+ 			<c:if test="${(forecastOne.highTemp - forecastOne.lowTemp) > 20}">
+ 				<p>Wear breatheable layers!!!</p>
+ 			</c:if>
 		</div>
 		<div id="five-day">
 		
@@ -139,7 +147,7 @@
 	
 	</div>
 
-</div>
+
 
 
 
