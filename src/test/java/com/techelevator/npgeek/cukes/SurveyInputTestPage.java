@@ -31,5 +31,11 @@ public class SurveyInputTestPage {
 		activityLevelField.sendKeys(activityLevel);
 		return this;
 	}
+	
+	public SurveyInputTestPage submitForm() {
+		WebElement submitButton = webDriver.findElement(By.className("submitButton"));
+		submitButton.click();
+		return new SurveyResultPage(webDriver);
+	}
 
 }
