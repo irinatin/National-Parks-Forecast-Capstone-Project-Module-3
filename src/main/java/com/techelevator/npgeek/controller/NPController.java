@@ -1,5 +1,6 @@
 package com.techelevator.npgeek.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -83,7 +84,9 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
-	public String processSurvey(HttpSession session) {
+	public String processSurvey(HttpSession session, Survey survey) {
+		survey.setSubmitDate(LocalDate.now());
+		surveyDao.submitSurvey(survey);
 		return "redirect:/favorite";
 	}
 	
