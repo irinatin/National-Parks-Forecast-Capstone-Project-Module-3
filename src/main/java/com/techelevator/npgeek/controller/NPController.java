@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -81,9 +82,12 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
-	public String displaySurveyForm(HttpSession session, ModelMap map, Survey surv) {
+	public String displaySurveyForm(HttpSession session, Model modelHolder, ModelMap map, Survey surv) {
 		List<Park> parks = parkDao.getAllParks();
 		map.addAttribute("parks", parks);
+		if(!modelHolder.containsAttribute("survey")){
+				modelHolder.addAttribute("survey", new Survey());
+		}
 		return "survey";
 	}
 	

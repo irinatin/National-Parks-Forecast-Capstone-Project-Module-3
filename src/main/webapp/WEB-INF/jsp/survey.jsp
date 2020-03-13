@@ -12,18 +12,20 @@
 <div class="form">
 
 <div class="formInputGroup">
-<label for="parkCode">My Favorite Park Is:</label>
-<select name="parkCode" id="parkCode">
-<c:forEach items="${parks}" var="park">
+<form:label path="parkCode">My Favorite Park Is:</form:label>
+<form:select path="parkCode" id="parkCode" />
+
+    <form:options items="${parks}" itemValue="${park.parkCode}" itemLabel="${park.parkName}" />
+<%-- <c:forEach items="${parks}" var="park">
 	<option value="${park.parkCode}">${park.parkName}</option>
-</c:forEach>
+</c:forEach> --%>
 </select>
 </div>
 
 <div class="formInputGroup">
 <form:label path="emailAddress">My Email Address Is:</form:label>
 <form:input type="text" path="emailAddress" id="emailAddress"/>
-<form:error path="emailAddress" cssClass="error"/>
+<form:errors path="lastName" cssClass="error" />
 
 </div>
 
