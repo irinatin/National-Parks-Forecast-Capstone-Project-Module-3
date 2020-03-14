@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
@@ -90,8 +92,7 @@
 
 </div>
 
-<!--This is not yet linked to anything, but it sure is fun to click.-->
-
+<hr>
 
 <div id="weather-box">
 
@@ -104,11 +105,19 @@
 		<p id="high-low">
 			High:
 			<c:if test="${tempCheck == true}">${forecastOne.highTemp}F</c:if>
-			<c:if test="${tempCheck == false}">${(forecastOne.highTemp - 32) * 0.5556}C</c:if>
+			<c:if test="${tempCheck == false}">
+				<c:set var = "celcel" value = "${(forecastOne.highTemp - 32) * 0.5556}" />
+				<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+			</c:if>	
+			<br>			
 			Low:
 			<c:if test="${tempCheck == true}">${forecastOne.lowTemp}F</c:if>
-			<c:if test="${tempCheck == false}">${(forecastOne.lowTemp - 32) * 0.5556}C</c:if>
+			<c:if test="${tempCheck == false}">
+				<c:set var = "celcel" value = "${(forecastOne.lowTemp - 32) * 0.5556}" />
+				<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+			</c:if>			
 		</p>
+		
 		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Celsius">Click
 			here for Celsius Temperatures</a> </p>
 		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Fahrenheit">Click
@@ -136,13 +145,19 @@
 				<p id="high">
 					High:
 					<c:if test="${tempCheck == true}">${forecastTwo.highTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastTwo.highTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastTwo.highTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>					
 				</p>
 
 				<p id="low">
 					Low:
 					<c:if test="${tempCheck == true}">${forecastTwo.lowTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastTwo.lowTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastTwo.lowTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>					
 				</p>
 
 			</div>
@@ -154,13 +169,19 @@
 				<p id="high">
 					High:
 					<c:if test="${tempCheck == true}">${forecastThree.highTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastThree.highTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastThree.highTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>					
 				</p>
 
 				<p id="low">
 					Low:
 					<c:if test="${tempCheck == true}">${forecastThree.lowTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastThree.lowTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastThree.lowTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>	
 				</p>
 
 			</div>
@@ -172,13 +193,19 @@
 				<p id="high">
 					High:
 					<c:if test="${tempCheck == true}">${forecastFour.highTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFour.highTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastFour.highTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>	
 				</p>
 
 				<p id="low">
 					Low:
 					<c:if test="${tempCheck == true}">${forecastFour.lowTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFour.lowTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastFour.lowTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>	
 				</p>
 
 			</div>
@@ -190,13 +217,22 @@
 				<p id="high">
 					High:
 					<c:if test="${tempCheck == true}">${forecastFive.highTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFive.highTemp - 32) * 0.5556}C</c:if>
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastFive.highTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>				
 				</p>
 
 				<p id="low">
 					Low:
 					<c:if test="${tempCheck == true}">${forecastFive.lowTemp}F</c:if>
-					<c:if test="${tempCheck == false}">${(forecastFive.lowTemp - 32) * 0.5556}C</c:if>
+					
+					
+					
+					<c:if test="${tempCheck == false}">
+					<c:set var = "celcel" value = "${(forecastFive.lowTemp - 32) * 0.5556}" />
+					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
+					</c:if>
 				</p>
 
 			</div>
@@ -204,7 +240,6 @@
 		</div>
 	</div>
 </div>
-
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 
