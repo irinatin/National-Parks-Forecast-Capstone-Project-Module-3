@@ -110,7 +110,7 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.GET)
-	public String displaySurveyForm(HttpSession session, Model modelHolder, ModelMap map, RedirectAttributes flash) {
+	public String displaySurveyForm(Model modelHolder, ModelMap map, RedirectAttributes flash) {
 		List<Park> parks = parkDao.getAllParks();
 		map.addAttribute("parks", parks);
 		if(!modelHolder.containsAttribute("survey")){
@@ -122,11 +122,13 @@ public class NPController {
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
 	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, RedirectAttributes flash, BindingResult result) {
 		
+		
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("survey", survey);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
-			return "redirect:/surveyPage";
+			return "/surveyPage";
 		}
+		
 		
 		flash.addFlashAttribute("message", "Thank you for your feedback!");
 		
