@@ -120,13 +120,13 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
-	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, RedirectAttributes flash, BindingResult result) {
+	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, BindingResult result, RedirectAttributes flash) {
 		
 		
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("survey", survey);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey", result);
-			return "/surveyPage";
+			return "redirect:/surveyPage";
 		}
 		
 		

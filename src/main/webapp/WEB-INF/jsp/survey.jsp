@@ -24,7 +24,7 @@
 <div class="formInputGroup">
 <form:label path="emailAddress">My Email Address Is:</form:label>
 <form:input type="text" path="emailAddress" id="emailAddress"/>
-<form:errors path="emailAddress" cssClass="error" />
+<form:errors path="emailAddress" style="color:red;" />
 
 </div>
 
