@@ -9,8 +9,8 @@ public class Survey {
 
 	private int surveyId;
 	private String parkCode;
-	@NotBlank(message="Email is Required")
-	@Email(message="Email Must Be a Valid Email")
+	//@NotBlank(message="Email is Required")
+	//@Email(message="Email Must Be a Valid Email")
 	private String emailAddress;
 	private String state;
 	private String activityLevel;

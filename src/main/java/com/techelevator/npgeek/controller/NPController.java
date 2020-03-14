@@ -120,8 +120,7 @@ public class NPController {
 	}
 	
 	@RequestMapping(path = "/surveyPage", method = RequestMethod.POST)
-	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, RedirectAttributes flash, BindingResult result, HttpSession session) {
-		survey.setSubmitDate(LocalDate.now());
+	public String processSurvey(@Valid @ModelAttribute("survey") Survey survey, RedirectAttributes flash, BindingResult result) {
 		
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("survey", survey);
@@ -131,13 +130,16 @@ public class NPController {
 		
 		flash.addFlashAttribute("message", "Thank you for your feedback!");
 		
+		survey.setSubmitDate(LocalDate.now());
 		surveyDao.submitSurvey(survey);
 		return "redirect:/favorite";
 	}
 	
 	@RequestMapping(path = "/favorite", method = RequestMethod.GET)
-	public String displayFavorite(HttpSession session) {
-		
+	public String displayFavorite(HttpSession session, ModelMap map) {
+
+		List<Park> parks = parkDao.allParksByNumberOfSurveys();
+		map.addAttribute("parks", parks);
 		return "favorite";
 	}
 	
