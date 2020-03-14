@@ -123,7 +123,37 @@ public abstract class DAOIntegrationTest {
 		assertEquals(results.size() + 1, resultsTwo.size());
 		
 	} 
+	@Test
+	public void testGetForecastBaseRec() {
+		String results = forecastDao.getForecastBasedRec("ENP", 2);
+		assertNotNull(results);
+		jdbcTemplate.update("INSERT INTO forecast VALUES (DEFAULT, 'TEST GET 5 DAY FORECAST')");
+		String resultsTwo = forecastDao.getForecastBasedRec("ENP", 2);
+		
+		assertNotNull(resultsTwo);
+		equals(results.compareTo(resultsTwo));
+	}
 	
-	
+	@Test
+	public void testGetLowTemp() {
+		String lowTemp = forecastDao.getLowTempRec("ENP", 4);
+		assertNotNull(lowTemp);
+		jdbcTemplate.update("INSERT INTO forecast VALUES(DEFAULT, 'TEST GET LOW TEMP')");
+		String lowTempTwo = forecastDao.getLowTempRec("ENP", 4);
+		
+		assertNotNull(lowTemp);
+		equals(lowTemp.compareTo(lowTempTwo));
+	}
 
+	
+	@Test
+	public void testGetHighTemp() {
+		String highTemp = forecastDao.getHighTempRec("CVNP", 2);
+		assertNotNull(highTemp);
+		jdbcTemplate.update("INSERT INTO forecast VALUES(DEFAULT, 'TEST GET HIGH TEMP')");
+		String highTempTwo = forecastDao.getHighTempRec("CVNP", 4);
+		
+		assertNotNull(highTemp);
+		equals(highTemp.compareTo(highTempTwo));
+	}
 }
