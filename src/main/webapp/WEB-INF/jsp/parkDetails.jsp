@@ -122,15 +122,10 @@
 			here for Celsius Temperatures</a> </p>
 		<p style="font-size: small"><a href="parkDetails?parkCode=${park.parkCode}&tempScale=Fahrenheit">Click
 			here for Fahrenheit Temperatures</a></p>
-
-
-
-
-
-
-		<p id="advisory">${advisory}</p>
+		
+		<p class="advisory">${advisory}</p>
 		<c:if test="${(forecastOne.highTemp - forecastOne.lowTemp) > 20}">
-			<p>Wear breatheable layers!!!</p>
+			<p class="advisory">Wear breatheable layers!!!</p>
 		</c:if>
 	</div>
 	<div>
@@ -226,9 +221,6 @@
 				<p id="low">
 					Low:
 					<c:if test="${tempCheck == true}">${forecastFive.lowTemp}F</c:if>
-					
-					
-					
 					<c:if test="${tempCheck == false}">
 					<c:set var = "celcel" value = "${(forecastFive.lowTemp - 32) * 0.5556}" />
 					<fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${celcel}" /> C			
