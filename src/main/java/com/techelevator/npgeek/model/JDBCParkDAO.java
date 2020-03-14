@@ -22,7 +22,7 @@ public class JDBCParkDAO implements ParkDAO {
 
 	@Override
 	public List<Park> getAllParks() {
-		ArrayList<Park> allNationalParks = new ArrayList<>();
+		List<Park> allNationalParks = new ArrayList<>();
 		String nationalParks = "SELECT * FROM park ORDER BY parkname ASC";
 		SqlRowSet parks = jdbcTemplate.queryForRowSet(nationalParks);
 		while (parks.next()) {
@@ -46,14 +46,13 @@ public class JDBCParkDAO implements ParkDAO {
 
 	@Override
 	public List<Park> allParksByNumberOfSurveys() {
-		ArrayList<Park> parksBySurveys = new ArrayList<>();
-		String surveyResults= "SELECT park.parkcode, park.parkname, COUNT(*) AS surveycount " +
-							   "FROM survey_result LEFT JOIN park ON survey_result.parkcode = park.parkcode " +
-							   "GROUP BY park.parkcode ORDER BY surveycount DESC;";
-		SqlRowSet surveys = jdbcTemplate.queryForRowSet(surveyResults);
-		while (surveys.next()) {
-			Park totalSurveys = mapRowToPark(surveys);
-			parksBySurveys.add(totalSurveys);
+		List<Park> parksBySurveys = new ArrayList<Park>();
+		String SqlParksBySurvey= "SELECT park.parkcode, park.parkname, park.state, park.acreage, park.elevationinfeet, park.milesoftrail, park.numberofcampsites, park.climate, park.yearfounded, park.annualvisitorcount, park.inspirationalquote, park.inspirationalquotesource, park.parkdescription, park.entryfee, park.numberofanimalspecies, COUNT(*) AS surveycount FROM survey_result LEFT JOIN park ON survey_result.parkcode = park.parkcode GROUP BY park.parkcode ORDER BY surveycount DESC;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(SqlParksBySurvey);
+		while (result.next()) {
+			Park thePark = mapRowToPark(result);
+			thePark.setNumberOfSurveys(result.getInt("surveycount"));
+			parksBySurveys.add(thePark);
 					
 		}
 	
@@ -66,7 +65,7 @@ public class JDBCParkDAO implements ParkDAO {
 		allParks.setParkName(results.getString("parkname"));
 		allParks.setState(results.getString("state"));
 		allParks.setAcreage(results.getDouble("acreage"));
-		allParks.setElevation(results.getDouble("elevationInFeet"));
+		allParks.setElevation(results.getDouble("elevationinfeet"));
 		allParks.setMilesOfTrail(results.getDouble("milesoftrail"));
 		allParks.setNumberOfSites(results.getInt("numberofcampsites"));
 		allParks.setClimate(results.getString("climate"));

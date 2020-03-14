@@ -19,6 +19,7 @@ public class Park implements Serializable {
 	private String parkDescription;
 	private BigDecimal entryFee;
 	private int numberOfAnimalSpecies;
+	private int numberOfSurveys;
 	
 	
 	 
@@ -111,6 +112,12 @@ public class Park implements Serializable {
 	}
 	public void setNumberOfAnimalSpecies(int numberOfAnimalSpecies) {
 		this.numberOfAnimalSpecies = numberOfAnimalSpecies;
+	}
+	public int getNumberOfSurveys() {
+		return numberOfSurveys;
+	}
+	public void setNumberOfSurveys(int numberOfSurveys) {
+		this.numberOfSurveys = numberOfSurveys;
 	}
 
 }
