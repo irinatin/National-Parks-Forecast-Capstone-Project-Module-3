@@ -6,7 +6,7 @@
 
 <c:forEach var="park" items="${parks}">
 
-	<div class="home-park-block">
+	<div <c:if test="${park.numberOfSurveys < 2}">style="display:none"</c:if> class="home-park-block">
 
 		<a href="parkDetails?parkCode=${park.parkCode}"> 
 			<c:set var="imageString" value="${park.parkCode}"/>
@@ -18,7 +18,7 @@
 
 			<h2 class="park-title">
 				<a href="parkDetails?parkCode=${park.parkCode}"> 
-					${park.parkName} has received ${park.numberOfSurveys} favorites!
+						${park.parkName} has received ${park.numberOfSurveys} favorites!
 				</a>
 			</h2>
 
